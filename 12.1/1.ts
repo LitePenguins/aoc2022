@@ -1,5 +1,4 @@
 import * as fs from 'fs';
-import { cursorTo } from 'readline';
 const file = fs.readFileSync('input.txt', 'utf8');
 // console.log(file);
 let split = file.split("\n\n");
