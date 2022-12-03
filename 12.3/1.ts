@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 const file = fs.readFileSync('input.txt', 'utf8');
 
+//part 1
 let total = 0;
 
 let split = file.split("\n");
