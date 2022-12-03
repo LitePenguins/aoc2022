@@ -35,7 +35,7 @@ console.log(`Part 1 Total: ${total}`);
 //part 2
 let newTotal = 0;
 
-
+//every 3 elves, check for same
 for (let i = 0; i < split.length; i = i + 3) {
     let matching: string[] = [];
 
@@ -50,6 +50,7 @@ for (let i = 0; i < split.length; i = i + 3) {
         }
     }
 
+    //a-z
     if (matching[0].charCodeAt(0) > 96 && matching[0].charCodeAt(0) < 123) {
         let priority = matching[0].charCodeAt(0) - 96;
         newTotal += priority;
