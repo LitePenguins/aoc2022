@@ -43,7 +43,7 @@ for (let i = 0; i < split.length; i = i + 3) {
     let second = new Set(split[i + 1]);
     let third = new Set(split[i + 2]);
 
-    //check sets for matching 
+    //check all 3 sets for matching 
     for (let c of first.values()) {
         if (second.has(c) && third.has(c)) {
             matching.push(c);
