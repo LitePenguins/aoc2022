@@ -20,7 +20,6 @@ split.map((e) => {
     } else if (firstElfSectionBegin >= secondElfSectionBegin && firstElfSectionEnd <= secondElfSectionEnd) {
         total++;
     }
-
 });
 
 console.log(total);
@@ -37,8 +36,9 @@ split.map((e) => {
     let secondElfSectionBegin = parseInt(secondElf.split("-")[0]);
     let secondElfSectionEnd = parseInt(secondElf.split("-")[1]);
 
-
-
+    if (!(firstElfSectionBegin > secondElfSectionEnd || secondElfSectionBegin > firstElfSectionEnd)) {
+        newTotal++;
+    }
 });
 
 console.log(newTotal);
