@@ -13,11 +13,11 @@ class Node {
     }
 }
 
-const file = fs.readFileSync('test.txt', 'utf8');
+const file = fs.readFileSync('input.txt', 'utf8');
 
 let stack: Node[] = [];
 let answer = 0;
-let smallest = 30000000;
+let sizes: number[] = [];
 
 const split = file.split("\n");
 split.map((e) => {
@@ -40,9 +40,7 @@ split.map((e) => {
                         answer += last?.nodeSize || 0;
                     }
 
-                    // if (((last?.nodeSize || 0) >= 30000000) && ((last?.nodeSize || 0) < answer)) {
-                    //     smallest = last?.nodeSize || 0;
-                    // }
+                    sizes.push(last?.nodeSize || 0);
                 } else {
                     //new directory
                     const newNode = new Node(directory);
@@ -79,13 +77,30 @@ while (stack.length > 1) {
         answer += last?.nodeSize || 0;
     }
 
-    // if (((last?.nodeSize || 0) >= 30000000) && ((last?.nodeSize || 0) < answer)) {
-    //     smallest = last?.nodeSize || 0;
-    // }
+    sizes.push(last?.nodeSize || 0);
 }
+
+sizes.push(stack[0].nodeSize);
 
 console.log(stack);
 console.log(`Sum of total sizes of directories <= 100000: ${answer}`);
 
 //part 2
-// console.log(smallest)
+let part2Answer = 0;
+const total = 70000000;
+const used = sizes[sizes.length - 1];
+const unused = total - used;
+const needed = 30000000 - unused;
+
+const sortedSizes = sizes.sort(function (a, b) {
+    return a - b;
+});
+
+for (let i = 0; i < sortedSizes.length; i++) {
+    if (sortedSizes[i] >= needed) {
+        part2Answer = sortedSizes[i];
+        break;
+    }
+}
+
+console.log(`Part 2: ${part2Answer}`);
