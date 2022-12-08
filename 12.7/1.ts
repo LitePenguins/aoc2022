@@ -92,7 +92,7 @@ const used = sizes[sizes.length - 1];
 const unused = total - used;
 const needed = 30000000 - unused;
 
-const sortedSizes = sizes.sort(function (a, b) {
+const sortedSizes = sizes.sort((a, b) => {
     return a - b;
 });
 
